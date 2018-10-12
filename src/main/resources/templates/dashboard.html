@@ -1,0 +1,31 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Accounts CPU usage details Dashboard</title>
+</head>
+<body>
+	<h1>Stake-Orders Dashboard</h1>
+	<form th:action="@{/dashboard}" method="get">
+		<button type="submit">Refresh</button>
+	</form>
+	<div class="container">
+		<table border="1" class="table table-striped" style="width: 100%">
+			<tr>
+				<td><b>Account Name</b></td>
+				<td><b>CPU Usage(in ms)</b></td>
+				<td><b>CPU Max(in ms)</b></td>
+				<td><b>CPU Available(in ms)</b></td>
+				<td><b>Time</b></td>
+			</tr>
+			<tr th:each="account : ${accounts}">
+				<td th:text="${account.account_name}"></td>
+				<td th:text="${account.cpu_limit.used}"></td>
+				<td th:text="${account.cpu_limit.max}"></td>
+				<td th:text="${account.cpu_limit.available}"></td>
+				<td th:text="${account.time}"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
